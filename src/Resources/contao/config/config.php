@@ -10,4 +10,4 @@
  * @link https://github.com/georgpreissl/xxx
  */
 
-$GLOBALS['FE_MOD']['miscellaneous']['ajaxLoader']   = 'GeorgPreissl\ContaoAjaxPageLoad\ModuleAjaxLoader';
+$GLOBALS['FE_MOD']['miscellaneous']['ajaxpageloader']   = 'GeorgPreissl\ContaoAjaxPageLoad\ModuleAjaxLoader';

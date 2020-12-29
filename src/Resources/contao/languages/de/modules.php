@@ -8,7 +8,7 @@
  */
 
 
-$GLOBALS['TL_LANG']['FMD']['ajaxLoader'] = [
-    'Ajax Loader',
-    'Ein Frontend-Modul um Ajax-Inhalte zu laden.',
+$GLOBALS['TL_LANG']['FMD']['ajaxpageloader'] = [
+    'Ajax Page Loader',
+    'Ein Frontend-Modul um Seiten mit Ajax zu laden.',
 ];
