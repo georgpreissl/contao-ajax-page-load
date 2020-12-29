@@ -6,7 +6,7 @@
 	<h1>Ajax Page Loader</h1>
 	<?php if($this->arrPages): ?>
 		<p>Click on one of the menu items to load the content of the respective page into the div "ajax-container".</p>
-		<ul>
+		<ul class="mod_ajax-page-load__menu">
 			<?php foreach($this->arrPages as $page): ?>
 				<li>
 					<a href="<?= $page ?>" ><?= $page ?></a>
@@ -18,7 +18,7 @@
 	<p>Ajax container:</p>
 	<div class="ajax-container"></div>
 	<script>
-	$("a").on("click", function(event){  
+	$(".mod_ajax-page-load__menu a").on("click", function(event){  
 		event.preventDefault();
 		$.ajax({  
 			url:        '/pagesearch/'+ $(this).attr('href'), // value from your routing.yml
