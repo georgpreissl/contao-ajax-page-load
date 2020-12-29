@@ -1,0 +1,6 @@
+ajax_page_load.contoller.getpage:
+    path: /pagesearch/{action}
+    defaults:
+        _controller: GeorgPreissl\ContaoAjaxPageLoad\Controller\AjaxPageLoad::pageSearchAction
+        _scope: frontend
+        _token_check: false

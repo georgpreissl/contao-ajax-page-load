@@ -1,0 +1,55 @@
+
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+	<h1>Ajax Page Loader</h1>
+	<?php if($this->arrPages): ?>
+		<p>Click on one of the menu items to load the content of the respective page into the div "ajax-container".</p>
+		<ul>
+			<?php foreach($this->arrPages as $page): ?>
+				<li>
+					<a href="<?= $page ?>" ><?= $page ?></a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
+
+	<p>Ajax container:</p>
+	<div class="ajax-container"></div>
+	<script>
+	$("a").on("click", function(event){  
+		event.preventDefault();
+		$.ajax({  
+			url:        '/pagesearch/'+ $(this).attr('href'), // value from your routing.yml
+			type:       'POST',   
+			dataType:   'json',
+			data: {
+						// keyword: $(this).val(),
+						// keyword2: "whotever2"
+			},
+			async:      true,  
+			success: function(data, status) {  
+				console.log(data.data);
+				// console.log(data.data.pageTitle);
+				// console.log(status);
+				$('.ajax-container').html(data.data)
+			},  
+			error : function(xhr, textStatus, errorThrown) {  
+				console.log(xhr); 
+				console.log(textStatus); 
+				console.log(errorThrown); 
+			}  
+		});  
+	});
+	</script>
+
+<style>
+.ajax-container {
+	padding: 1rem;
+	border: 1px solid #bbb;
+}
+</style>
+
+
+<?php $this->endblock(); ?>
