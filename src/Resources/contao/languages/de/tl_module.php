@@ -1,7 +1,7 @@
 <?php
 
 // Legends
-$GLOBALS['TL_LANG']['tl_module']['ajaxpages_legend'] = 'Mit Ajax ladbare Seiten';
+$GLOBALS['TL_LANG']['tl_module']['ajaxpages_legend'] = 'Seiten welche mit Ajax geladen werden sollen';
 
 
 

@@ -1,36 +1,25 @@
 <?php
 
-// namespace Contao;
 namespace GeorgPreissl\ContaoAjaxPageLoad;
 
 use Contao\StringUtil;
 use Contao\Controller;
-/**
- * Class ModuleCdList
- *
- * Front end module "cd list".
- */
-class ModuleAjaxLoader extends \Module
+use Contao\PageModel;
+
+
+class ModuleAjaxPageLoad extends \Module
 {
 
-	/**
-	 * Template
-	 * @var string
-	 */
+
 	protected $strTemplate = 'mod_ajax-page-load';
-	// protected $strTemplate = 'mod_test';
 
 
-	/**
-	 * Display a wildcard in the back end
-	 * @return string
-	 */
 	public function generate()
 	{
 		if (TL_MODE == 'BE')
 		{
 			$objTemplate = new \BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['cd_list'][0]) . ' ###';
+			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['ajaxpageload'][0]) . ' ###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
 			$objTemplate->link = $this->name;
@@ -43,21 +32,14 @@ class ModuleAjaxLoader extends \Module
 	}
 
 
-	/**
-	 * Generate the module
-	 */
+
 	protected function compile()
 	{
-// dump($this->pages);
 
 
-// $this->x = Controller::getFrontendModule(8,'main');
+		$this->pages = StringUtil::deserialize($this->pages, true);
 
-
-$this->pages = StringUtil::deserialize($this->pages, true);
-
-
-		$objPages = \Contao\PageModel::findPublishedRegularWithoutGuestsByIds($this->pages, array('includeRoot'=>true));
+		$objPages = PageModel::findPublishedRegularWithoutGuestsByIds($this->pages, array('includeRoot'=>true));
 		$arrPages = [];
 		while ($objPages->next())
 		{
